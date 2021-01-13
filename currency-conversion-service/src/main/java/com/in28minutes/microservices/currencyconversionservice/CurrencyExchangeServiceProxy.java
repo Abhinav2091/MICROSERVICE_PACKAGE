@@ -10,13 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 //@FeignClient(name="currency-exchange-service", url="localhost:8000")
 
 //approach two
-@FeignClient(name="currency-exchange-service")
+//calling service direct from application /microservice
+//@FeignClient(name="currency-exchange-service")
+//call it from Ai Gate way in our case Zuul
+@FeignClient(name="netflix-zuul-api-gateway-server")
 //@FeignClient(name="netflix-zuul-api-gateway-server")
 //name of the service that we are talking to for naming server
 @RibbonClient(name="currency-exchange-service")
 public interface CurrencyExchangeServiceProxy {
-	@GetMapping("/currency-exchange/from/{from}/to/{to}")
-	//@GetMapping("/currency-exchange-service/currency-exchange/from/{from}/to/{to}")
+	//@GetMapping("/currency-exchange/from/{from}/to/{to}")
+	//Append the application name for using Api Gateway
+	@GetMapping("/currency-exchange-service/currency-exchange/from/{from}/to/{to}")
 	public CurrencyConversionBean retrieveExchangeValue
 		(@PathVariable("from") String from, @PathVariable("to") String to);
 }
