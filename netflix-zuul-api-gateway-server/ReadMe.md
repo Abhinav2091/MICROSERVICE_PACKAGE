@@ -10,5 +10,7 @@ https://github.com/in28minutes/spring-microservices
 https://github.com/in28minutes/spring-microservices#installing-tools
 
 #rabbit MQ important commands
+#zipkin Distributed serverr that will listen to Rabbit MQ
+#make sure rabbit MQ server is UP
 set RABBIT_URI=amqp://localhost
-java -jar zipkin-server-2.7.0-exec.jar
+java -jar zipkin-server-version-exec.jar
