@@ -14,3 +14,12 @@ https://github.com/in28minutes/spring-microservices#installing-tools
 #make sure rabbit MQ server is UP
 set RABBIT_URI=amqp://localhost
 java -jar zipkin-server-version-exec.jar
+
+#to reflect changes done in spring cloud config with out starting the server again
+#service do need to have actuator installed
+http://localhost:{serviceport}/actuator/refresh
+
+# to over come the problem of hitting each instance indivdualy we can go forspring cloud bus
+#we will use Rabbit mq here for it
+#just add dependency for bus-amq in both pom of server config and service
+http://localhost:{serviceport}/actuator/bus-refresh

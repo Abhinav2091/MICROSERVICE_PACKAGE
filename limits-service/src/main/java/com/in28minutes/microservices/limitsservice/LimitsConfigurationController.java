@@ -20,7 +20,8 @@ public class LimitsConfigurationController {
 		return limitConfiguration;
 	}
 	
-	/*@GetMapping("/fault-tolerance-example")
+	@GetMapping("/fault-tolerance-example")
+	//Hystrix command to call for backup method(method name) instead of failure of this method
 	@HystrixCommand(fallbackMethod="fallbackRetrieveConfiguration")
 	public LimitConfiguration retrieveConfiguration() {
 		throw new RuntimeException("Not available");
@@ -28,6 +29,5 @@ public class LimitsConfigurationController {
 
 	public LimitConfiguration fallbackRetrieveConfiguration() {
 		return new LimitConfiguration(999, 9);
-	}*/
-
+	}
 }
